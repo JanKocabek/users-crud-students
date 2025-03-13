@@ -1,7 +1,7 @@
 package servlets;
 
 import jakarta.servlet.http.HttpSession;
-import userDao.UserDao;
+import dao.UserDao;
 import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
