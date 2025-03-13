@@ -6,15 +6,24 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+
 @WebServlet("/")
 public class List extends HttpServlet {
-    UserDao dao = new UserDao();
+    /**
+     * this servlet handles starting of the main page the app
+     * giving her necessary information
+     *variable servlets are
+     */
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("listOfUsers", dao.findAll());
+        HttpSession session = req.getSession(true);
+        UserDao userDao = new UserDao();
+        req.setAttribute("listOfUsers", userDao.findAll());
         getServletContext().getRequestDispatcher("/user/list.jsp").forward(req, resp);
 
     }
