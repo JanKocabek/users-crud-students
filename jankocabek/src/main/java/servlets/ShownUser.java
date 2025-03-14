@@ -14,8 +14,8 @@ import java.io.IOException;
 public class ShownUser extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("userId"));
         UserDao userDao = new UserDao();
         User  user = userDao.findById(id);
         req.setAttribute("user", user);

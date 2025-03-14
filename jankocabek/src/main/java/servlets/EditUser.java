@@ -1,6 +1,5 @@
 package servlets;
 
-import jakarta.servlet.http.HttpSession;
 import dao.UserDao;
 import entity.User;
 import jakarta.servlet.ServletException;
@@ -15,10 +14,9 @@ import java.io.IOException;
 public class EditUser extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        HttpSession session = req.getSession();
-        session.setAttribute("userId", id);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("userId"));
+        req.setAttribute("id", id);
         UserDao userDao = new UserDao();
         User user = userDao.findById(id);
         req.setAttribute("user", user);
