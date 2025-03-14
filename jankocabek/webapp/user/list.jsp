@@ -15,18 +15,19 @@
           rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<c:url value= "/theme/css/sb-admin-2.min.css" />" rel="stylesheet">
-<style>
-    .textSubmit{
-        margin: 0;
-        padding: 0;
-        border: none;
-        background: none;
-        outline: none;
-        cursor: pointer;
-        color: #0000EE; /* Default blue color */
-        text-decoration: underline; /* Underlined text */
-    }
-</style>
+
+    <style>
+        .textSubmit {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+            outline: none;
+            cursor: pointer;
+            color: #0000EE; /* Default blue color */
+            text-decoration: underline; /* Underlined text */
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -308,37 +309,51 @@
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div>
                 <!-- Content Row -->
-                <div class="row">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>UserList</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="user" items="${listOfUsers}">
-                            <tr>
-                                <td>${user.id}</td>
-                                <td>${user.userName}</td>
-                                <td>${user.email}</td>
-                                <td>
-                                    <form method="POST" action="<c:url value="/user/edit" />">
-                                        <input type="hidden" name="id" value="${user.id}">
-                                        <input class="textSubmit" type="submit" value="edit">
-                                    </form>
-                                    <form method="POST" action="<c:url value="/user/delete" />">
-                                        <input type="hidden" name="id" value="${user.id}">
-                                        <input class="textSubmit" type="submit" value="delete">
-                                    </form>
-                                    <form method="POST" action="<c:url value="/user/show" />">
-                                        <input type="hidden" name="id" value="${user.id}">
-                                        <input class="textSubmit" type="submit" value="show">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                <div class="row ">
+                    <div class="col-xl-8 col-lg-10 col-md-12 mx-auto">
+                        <div class="card border-left-primary shadow rounded ">
+                            <div class="card-header  py-3  ">
+                                <h6 class="m-0 font-weight-bold text-primary">User Data Table</h6>
+                            </div>
+
+                            <table class="table table-bordered   ">
+                                <thead>
+                                <tr>
+                                    <th class="">id</th>
+                                    <th>userName</th>
+                                    <th>email</th>
+                                    <th>Tools</th>
+                                </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                <c:forEach var="user" items="${listOfUsers}">
+                                    <tr>
+                                        <td class="align-middle">${user.id}</td>
+                                        <td class="align-middle">${user.userName}</td>
+                                        <td class="align-middle">${user.email}</td>
+                                        <td class="align-middle">
+                                            <div class=" d-flex justify-content-center ">
+                                                <form method="POST" action="<c:url value="/user/edit" />">
+                                                    <input type="hidden" name="id" value="${user.id}">
+                                                    <input class="textSubmit " type="submit" value="edit">
+                                                </form>
+                                                <form method="POST" action="<c:url value="/user/delete" />">
+                                                    <input type="hidden" name="id" value="${user.id}">
+                                                    <input class="textSubmit" type="submit" value="delete">
+                                                </form>
+                                                <form method="POST" action="<c:url value="/user/show" />">
+                                                    <input type="hidden" name="id" value="${user.id}">
+                                                    <input class="textSubmit" type="submit" value="show">
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.container-fluid -->
@@ -384,21 +399,21 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="theme/vendor/jquery/jquery.min.js"></script>
-<script src="theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/theme/vendor/jquery/jquery.min.js"></script>
+<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="theme/js/sb-admin-2.min.js"></script>
+<script src="/theme/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="theme/vendor/chart.js/Chart.min.js"></script>
+<script src="/theme/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="theme/js/demo/chart-area-demo.js"></script>
-<script src="theme/js/demo/chart-pie-demo.js"></script>
+<script src="/theme/js/demo/chart-area-demo.js"></script>
+<script src="/theme/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
