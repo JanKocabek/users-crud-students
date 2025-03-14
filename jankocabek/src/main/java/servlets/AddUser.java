@@ -21,6 +21,6 @@ public class AddUser extends HttpServlet {
         String password = req.getParameter("password");
         User user = new User(username,email,password);
         dao.create(user);
-        resp.sendRedirect("/");
+        resp.sendRedirect("/main");
     }
 }
