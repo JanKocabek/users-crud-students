@@ -10,24 +10,15 @@
     <meta name="author" content="">
     <title>Dashboard Main Page</title>
     <!-- Custom fonts for this template-->
-    <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css" />" rel="stylesheet">
+    <link href="/theme/vendor/fontawesome-free/css/all.min.css"  rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="<c:url value= "/theme/css/sb-admin-2.min.css" />" rel="stylesheet">
+    <link href= "/theme/css/sb-admin-2.min.css"  rel="stylesheet">
+    <link href="/theme/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Javascript Table Plugin-->
+<%--        <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>--%>
 
-    <style>
-        .textSubmit {
-            margin: 0;
-            padding: 0;
-            border: none;
-            background: none;
-            outline: none;
-            cursor: pointer;
-            color: #0000EE; /* Default blue color */
-            text-decoration: underline; /* Underlined text */
-        }
-    </style>
 </head>
 
 <body id="page-top">
@@ -209,7 +200,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="theme/img/undraw_profile_1.svg"
+                                    <img class="rounded-circle" src="/theme/img/undraw_profile_1.svg"
                                          alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
@@ -222,7 +213,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="theme/img/undraw_profile_2.svg"
+                                    <img class="rounded-circle" src="/theme/img/undraw_profile_2.svg"
                                          alt="...">
                                     <div class="status-indicator"></div>
                                 </div>
@@ -235,7 +226,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="theme/img/undraw_profile_3.svg"
+                                    <img class="rounded-circle" src="/theme/img/undraw_profile_3.svg"
                                          alt="...">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
@@ -271,7 +262,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                             <img class="img-profile rounded-circle"
-                                 src="theme/img/undraw_profile.svg">
+                                 src="/theme/img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -305,47 +296,33 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div>
-                <!-- Content Row -->
-                <div class="row ">
-                    <div class="col-xl-8 col-lg-10 col-md-12 mx-auto">
-                        <div class="card border-left-primary shadow rounded ">
-                            <div class="card-header  py-3  ">
-                                <h6 class="m-0 font-weight-bold text-primary">User Data Table</h6>
-                            </div>
-
-                            <table class="table table-bordered   ">
+                <!-- User Table -->
+                <div class="card border-left-primary shadow rounded ">
+                    <div class="card-header  py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Users Data</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive  ">
+                            <table id="dataTable" class="table table-bordered "   >
                                 <thead>
                                 <tr>
-                                    <th class="">id</th>
+                                    <th>id</th>
                                     <th>userName</th>
                                     <th>email</th>
                                     <th>Tools</th>
                                 </tr>
                                 </thead>
-                                <tbody class="align-middle">
+                                <tbody>
                                 <c:forEach var="user" items="${listOfUsers}">
                                     <tr>
-                                        <td class="align-middle">${user.id}</td>
-                                        <td class="align-middle">${user.userName}</td>
-                                        <td class="align-middle">${user.email}</td>
-                                        <td class="align-middle">
-                                            <div class=" d-flex justify-content-center ">
-                                                <form method="POST" action="<c:url value="/user/edit" />">
-                                                    <input type="hidden" name="id" value="${user.id}">
-                                                    <input class="textSubmit " type="submit" value="edit">
-                                                </form>
-                                                <form method="POST" action="<c:url value="/user/delete" />">
-                                                    <input type="hidden" name="id" value="${user.id}">
-                                                    <input class="textSubmit" type="submit" value="delete">
-                                                </form>
-                                                <form method="POST" action="<c:url value="/user/show" />">
-                                                    <input type="hidden" name="id" value="${user.id}">
-                                                    <input class="textSubmit" type="submit" value="show">
-                                                </form>
-                                            </div>
+                                        <td>${user.id}</td>
+                                        <td>${user.userName}</td>
+                                        <td>${user.email}</td>
+                                        <td>
+                                            <a href="/user/edit?userId=${user.id}">edit</a>
+                                            <a href="/user/delete?userId=${user.id}">delete</a>
+                                            <a href="/user/show?userId=${user.id}">show</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -399,22 +376,28 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="/theme/vendor/jquery/jquery.min.js"></script>
-<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/theme/vendor/jquery/jquery.min.js "></script>
+<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js" ></script>
 
 <!-- Core plugin JavaScript-->
 <script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/theme/js/sb-admin-2.min.js"></script>
+<script src="/theme/js/sb-admin-2.min.js" ></script>
 
 <!-- Page level plugins -->
-<script src="/theme/vendor/chart.js/Chart.min.js"></script>
+<script src="/theme/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/theme/vendor/datatables/dataTables.bootstrap4.min.js" ></script>
 
 <!-- Page level custom scripts -->
-<script src="/theme/js/demo/chart-area-demo.js"></script>
-<script src="/theme/js/demo/chart-pie-demo.js"></script>
+<!-- javascript table plugin -->
+<%--<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>--%>
 
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
 </body>
 
 </html>
