@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet("/")
+@WebServlet("/main")
 public class List extends HttpServlet {
     /**
      * this servlet handles starting of the main page the app
