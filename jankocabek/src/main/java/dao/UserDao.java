@@ -14,6 +14,8 @@ public class UserDao {
             "SELECT * FROM users WHERE id = ?";
     private static final String UPDATE_USER_QUERY =
             "UPDATE users SET username = ?, email = ?, password = ? WHERE  id = ?";
+    private static final String UPDATE_WITHOUT =
+            "UPDATE users SET username = ?, email = ? WHERE id = ?";
     private static final String DELETE_USER_QUERY =
             "DELETE FROM users WHERE id = ?";
     private static final String FIND_ALL_USER_QUERY =
@@ -67,6 +69,20 @@ public class UserDao {
             e.printStackTrace(System.err);
         }
     }
+
+    public void updateWithoutPassword(User user) {
+        try (Connection connection = DbUtil.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement(UPDATE_WITHOUT);
+            ps.setInt(3, user.getId());
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getEmail());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+
 
     public boolean delete(int userId) {
         try (Connection connection = DbUtil.getConnection()) {
