@@ -45,7 +45,7 @@
                 <!-- User Table -->
                 <div class="card border-left-primary shadow rounded" style="width: 50%;">
                     <div class="card-header  py-3">
-                        <h5 class="m-0 font-weight-bold text-primary">Add User</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Edit User</h5>
                     </div>
                     <div class="card-body">
                         <div class="text-center">
@@ -64,8 +64,8 @@
                                        class="form-control form-control-user" required>
                             </div>
                             <div class="form-group ">
-                                <input type="password" name="password" placeholder="Write Password..."
-                                       class="form-control form-control-user" required>
+                                <input type="password" name="password"  placeholder="Omit if you don't want to change."
+                                       class="form-control form-control-user">
                             </div>
                             <div class="row">
                                 <div class="col">
