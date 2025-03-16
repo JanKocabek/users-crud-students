@@ -16,10 +16,8 @@ public class UserDao {
             "UPDATE users SET username = ?, email = ?, password = ? WHERE  id = ?";
     private static final String DELETE_USER_QUERY =
             "DELETE FROM users WHERE id = ?";
-    private static final String FINDALL_USER_QUERY =
+    private static final String FIND_ALL_USER_QUERY =
             "SELECT * FROM users";
-    private static final String FIND_LAST_USER_QUERY =
-            "SELECT * FROM users ORDER BY id DESC LIMIT 1";
 
     public User create(User user) {
         try (Connection connection = DbUtil.getConnection()) {
@@ -83,7 +81,7 @@ public class UserDao {
 
     public List<User> findAll() {
         try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(FINDALL_USER_QUERY);
+            PreparedStatement ps = connection.prepareStatement(FIND_ALL_USER_QUERY);
             ResultSet rs = ps.executeQuery();
             List<User> users = new ArrayList<>();
             while (rs.next()) {
@@ -93,20 +91,6 @@ public class UserDao {
                         rs.getString("password")));
             }
             return users;
-        } catch (SQLException e) {
-            e.printStackTrace(System.err);
-            return null;
-        }
-    }
-
-    public User findLast() {
-        try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(FIND_LAST_USER_QUERY);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return new User(rs.getInt(1), rs.getString("username"), rs.getString("email"), rs.getString("password"));
-            }
-            return null;
         } catch (SQLException e) {
             e.printStackTrace(System.err);
             return null;
