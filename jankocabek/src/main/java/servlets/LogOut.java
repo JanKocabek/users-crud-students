@@ -14,8 +14,8 @@ import java.io.IOException;
 public class LogOut extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+        HttpSession session = req.getSession(false);
         session.invalidate();
         resp.sendRedirect("/login/login.jsp");
     }
