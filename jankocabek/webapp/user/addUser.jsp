@@ -81,7 +81,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid d-flex justify-content-center align-items-center">
+            <div class="container-fluid d-flex justify-content-center align-items-center" >
 
                 <!-- Page Heading -->
 
@@ -95,19 +95,18 @@
                             <div class="h4 text-gray-900 mb-4"> User Details</div>
                         </div>
 
-                        <c:url value="/user/update" var="actionUrl"/>
+                        <c:url value="/user/add" var="actionUrl"/>
                         <form method="POST" action="${actionUrl}" class="user">
-                            <input type="hidden" name="id" value="${user.id}">
                             <div class="form-group ">
-                                <input type="text" name="userName" value="${user.userName}"
-                                       class="form-control form-control-user" required="required">
-                            </div>
-                            <div class="form-group ">
-                                <input type="email" name="email" value="${user.email}"
+                                <input type="text" name="username" placeholder="Username"
                                        class="form-control form-control-user" required>
                             </div>
                             <div class="form-group ">
-                                <input type="password" name="password" placeholder="Write Password..."
+                                <input type="email" name="email" placeholder="Email Address"
+                                       class="form-control form-control-user" required>
+                            </div>
+                            <div class="form-group ">
+                                <input type="password" name="password" placeholder="Password"
                                        class="form-control form-control-user" required>
                             </div>
                             <div class="row">
@@ -130,7 +129,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->
-        <footer class="sticky-footer bg-white  ">
+        <footer class="sticky-footer bg-white mt-auto ">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; Your Website 2021</span>
@@ -164,4 +163,5 @@
 </body>
 
 </html>
+
 
