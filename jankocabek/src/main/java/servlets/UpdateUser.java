@@ -1,6 +1,5 @@
 package servlets;
 
-import jakarta.servlet.http.HttpSession;
 import dao.UserDao;
 import entity.User;
 import jakarta.servlet.ServletException;
@@ -16,15 +15,13 @@ public class UpdateUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
         UserDao userDao = new UserDao();
-        String username = req.getParameter("username");
+        String username = req.getParameter("userName");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        int id = Integer.parseInt(session.getAttribute("userId").toString());
+        int id = Integer.parseInt(req.getParameter("id"));
 
         userDao.update(new User(id, username,email,password));
-        session.removeAttribute("userId");//cleaning  because it would not need afterward
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/main");
     }
 }
