@@ -13,12 +13,12 @@ import java.io.IOException;
 public class UpdateUser extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        UserDao userDao = new UserDao();
-        String username = req.getParameter("userName");
-        String email = req.getParameter("email");
-        int id = Integer.parseInt(req.getParameter("id"));
-        String password;
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws IOException {
+        final UserDao userDao = new UserDao();
+        final String username = req.getParameter("userName");
+        final String email = req.getParameter("email");
+        final int id = Integer.parseInt(req.getParameter("id"));
+        final String password;
         if (req.getParameter("password") == null || req.getParameter("password").isEmpty()) {
             userDao.updateWithoutPassword(new User(id, username, email));
         } else {

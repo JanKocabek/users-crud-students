@@ -13,8 +13,8 @@ import java.io.IOException;
 public class LogOut extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
-        HttpSession session = req.getSession(false);
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws  IOException {
+        final HttpSession session = req.getSession(false);
         session.invalidate();
         resp.sendRedirect("/login/login.jsp");
     }

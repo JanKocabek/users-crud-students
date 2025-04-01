@@ -14,10 +14,10 @@ import java.io.IOException;
 public class ShownUser extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("userId"));
-        UserDao userDao = new UserDao();
-        User  user = userDao.findById(id);
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        final int id = Integer.parseInt(req.getParameter("userId"));
+        final UserDao userDao = new UserDao();
+        final User  user = userDao.findById(id);
         req.setAttribute("user", user);
         req.getRequestDispatcher("/user/showUser.jsp").forward(req, resp);
     }

@@ -19,8 +19,8 @@ public class MainPage extends HttpServlet {
      */
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDao userDao = new UserDao();
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        final UserDao userDao = new UserDao();
         req.setAttribute("listOfUsers", userDao.findAll());
         getServletContext().getRequestDispatcher("/user/list.jsp").forward(req, resp);
 

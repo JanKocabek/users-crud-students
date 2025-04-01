@@ -11,21 +11,16 @@ import java.io.IOException;
 @WebFilter("/*")
 public class AuthFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        HttpSession session = httpRequest.getSession(false);
-        String uri = httpRequest.getRequestURI();
+    public void doFilter( ServletRequest request,  ServletResponse response,  FilterChain chain) throws IOException, ServletException {
+        final HttpServletRequest httpRequest = (HttpServletRequest) request;
+        final HttpServletResponse httpResponse = (HttpServletResponse) response;
+        final HttpSession session = httpRequest.getSession(false);
+        final String uri = httpRequest.getRequestURI();
 
-        if (uri.startsWith("/login")) {
+        if (uri.startsWith("/login") || (session != null && session.getAttribute("username") != null)) {
             chain.doFilter(request, response);
-            return;
-        }
-        // Check if the username attribute exists in the session
-        if (session != null && session.getAttribute("username") != null) {
-           chain.doFilter(request, response); // User is logged in, proceed
-        } else {
-            // Redirect to login page
+        }else
+        {            // Redirect to login page
             httpResponse.sendRedirect("/login");
         }
     }

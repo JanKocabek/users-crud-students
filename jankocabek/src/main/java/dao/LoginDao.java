@@ -11,15 +11,15 @@ public class LoginDao {
             "SELECT authentication.password FROM authentication WHERE username = ?";
 
 
-    public String checkAuth(String userName) {
-        try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(FIND_USER_QUERY);
+    public String checkAuth(final String userName) {
+        try (final Connection connection = DbUtil.getConnection()) {
+            final PreparedStatement ps = connection.prepareStatement(FIND_USER_QUERY);
             ps.setString(1, userName);
-            ResultSet rs = ps.executeQuery();
-            if( rs.next()){
+            final ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
                 return rs.getString("password");
-            }else return null;
-        } catch (SQLException e) {
+            } else return null;
+        } catch (final SQLException e) {
             e.printStackTrace(System.err);
             return null;
         }

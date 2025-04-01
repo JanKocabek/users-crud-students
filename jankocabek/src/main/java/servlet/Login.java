@@ -14,18 +14,18 @@ import java.io.IOException;
 @WebServlet("/login")
 public class Login extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws IOException {
         resp.sendRedirect("/login/login.jsp");
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("userName");
-        String password = req.getParameter("password");
-        LoginDao loginDao = new LoginDao();
-        String forCompare = loginDao.checkAuth(username);
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        final String username = req.getParameter("userName");
+        final String password = req.getParameter("password");
+        final LoginDao loginDao = new LoginDao();
+        final String forCompare = loginDao.checkAuth(username);
         if ((password != null && !password.isEmpty()) && BCrypt.checkpw(password, forCompare)) {
-            HttpSession session = req.getSession(true);
+            final HttpSession session = req.getSession(true);
             session.setAttribute("username", username);
             resp.sendRedirect("/main");
         } else {

@@ -10,21 +10,21 @@ public class User {
     private String passHash;
     private String email;
 
-    public User(String userName, String email, String password) {
+    public User(final String userName, final String email, final String password) {
         this.id = 0;
         this.userName = userName;
         this.email = email;
         this.passHash = getHashedPass(password);
     }
 
-    public User(int id, String userName, String email, String password) {
+    public User(final int id, final String userName, final String email, final String password) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.passHash = getHashedPass(password);
     }
 
-    public User(int id, String userName, String email) {
+    public User(final int id, final String userName, final String email) {
         this.id = id;
         this.userName = userName;
         this.email = email;
@@ -46,23 +46,23 @@ public class User {
         return email;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(final String userName) {
         this.userName = userName;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.passHash = getHashedPass(password);
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
-    private String getHashedPass(String password) {
+    private String getHashedPass(final String password) {
         return BCrypt.hashpw(password, generateSalt());
     }
 
@@ -70,7 +70,7 @@ public class User {
         return BCrypt.gensalt();
     }
 
-    public boolean checkPassword(String password) {
+    public boolean checkPassword(final String password) {
         return BCrypt.checkpw(password, this.passHash);
     }
 
@@ -85,9 +85,9 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        final User user = (User) o;
         return getId() == user.getId() && Objects.equals(getUserName(), user.getUserName()) && Objects.equals(getPassHash(), user.getPassHash()) && Objects.equals(getEmail(), user.getEmail());
     }
 

@@ -14,12 +14,12 @@ import java.io.IOException;
 public class AddUser extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDao dao = new UserDao();
-        String username = req.getParameter("username");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        User user = new User(username,email,password);
+    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws ServletException, IOException {
+        final UserDao dao = new UserDao();
+        final String username = req.getParameter("username");
+        final String email = req.getParameter("email");
+        final String password = req.getParameter("password");
+        final User user = new User(username,email,password);
         dao.create(user);
         resp.sendRedirect("/main");
     }

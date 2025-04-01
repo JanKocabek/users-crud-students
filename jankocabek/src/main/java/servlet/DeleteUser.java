@@ -13,9 +13,9 @@ import java.io.IOException;
 public class DeleteUser extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("userId"));
-        UserDao userDao = new UserDao();
+    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws ServletException, IOException {
+        final int id = Integer.parseInt(req.getParameter("userId"));
+        final UserDao userDao = new UserDao();
         userDao.delete(id);
         resp.sendRedirect(req.getContextPath() + "/main");
     }
