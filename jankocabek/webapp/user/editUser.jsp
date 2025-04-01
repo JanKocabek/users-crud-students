@@ -52,7 +52,7 @@
                             <div class="h4 text-gray-900 mb-4"> User Details</div>
                         </div>
 
-                        <c:url value="/user/update" var="actionUrl"/>
+                        <c:url value="/user/edit" var="actionUrl"/>
                         <form method="POST" action="${actionUrl}" class="user">
                             <input type="hidden" name="id" value="${user.id}">
                             <div class="form-group ">
