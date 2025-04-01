@@ -1,4 +1,4 @@
-package servlets;
+package servlet;
 
 import dao.LoginDao;
 import jakarta.servlet.ServletException;

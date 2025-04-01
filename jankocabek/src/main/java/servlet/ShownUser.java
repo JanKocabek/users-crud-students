@@ -1,4 +1,4 @@
-package servlets;
+package servlet;
 
 import entity.User;
 import jakarta.servlet.ServletException;

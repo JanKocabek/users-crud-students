@@ -1,12 +1,8 @@
 package dao;
 
-import entity.User;
-import servlets.Login;
 import util.DbUtil;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class LoginDao {
