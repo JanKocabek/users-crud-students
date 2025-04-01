@@ -2,7 +2,6 @@ package servlet;
 
 import dao.UserDao;
 import entity.User;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ import java.io.IOException;
 public class AddUser extends HttpServlet {
 
     @Override
-    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws  IOException {
         final UserDao dao = new UserDao();
         final String username = req.getParameter("username");
         final String email = req.getParameter("email");

@@ -21,7 +21,7 @@ public class UserDao {
     private static final String FIND_ALL_USER_QUERY =
             "SELECT * FROM users";
 
-    public User create(final User user) {
+    public void create(final User user) {
         try (final Connection connection = DbUtil.getConnection()) {
             final PreparedStatement ps = connection.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUserName());
@@ -32,10 +32,8 @@ public class UserDao {
             if (rs.next()) {
                 user.setId(rs.getInt(1));
             }
-            return user;
         } catch (final SQLException e) {
             e.printStackTrace(System.err);
-            return null;
         }
     }
 

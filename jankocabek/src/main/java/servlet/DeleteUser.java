@@ -1,7 +1,6 @@
 package servlet;
 
 import dao.UserDao;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ import java.io.IOException;
 public class DeleteUser extends HttpServlet {
 
     @Override
-    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost( HttpServletRequest req,  HttpServletResponse resp) throws  IOException {
         final int id = Integer.parseInt(req.getParameter("userId"));
         final UserDao userDao = new UserDao();
         userDao.delete(id);
